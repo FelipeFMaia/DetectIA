@@ -13,12 +13,22 @@ venv/
 .idea/
 *.swp
 
-# Dados e artefatos de treino
-data/
+# Dataset cache (índices filtrados)
+cache/
+
+# Runs (checkpoints, logs TensorBoard)
 runs/
 checkpoints/
 *.pt
 *.pth
+
+# Imagens privadas / artefatos de exploração local
+samples_ood/
+samples_test_curated/
+*.png
+
+# Mas mantenha imagens em pastas de docs (se vier a existir)
+!docs/**/*.png
 
 # Notebooks (mantém estrutura, ignora outputs grandes)
 .ipynb_checkpoints/
