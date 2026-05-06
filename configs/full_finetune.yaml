@@ -1,0 +1,36 @@
+# Experimento Opção 2 — fine-tuning completo
+
+experiment:
+  name: "full_finetune"
+  seed: 42
+
+data:
+  source: "hemg"
+  batch_size: 64        # Se OOM, reduz pra 32
+  num_workers: 4
+  max_samples_train: null
+  max_samples_val: null
+
+model:
+  num_classes: 1
+  pretrained: true
+  freeze_backbone: false   # OPÇÃO 2 — descongela tudo
+  dropout: 0.5
+
+training:
+  epochs: 10
+  optimizer:
+    name: "adam"
+    lr: 0.0001          # 10× MENOR que Opção 1 (regra de ouro pra fine-tuning)
+    weight_decay: 0.0001
+  scheduler:
+    name: "cosine"
+    eta_min: 0.000001
+  amp: true
+  early_stopping:
+    patience: 3
+    monitor: "val_auc"
+    mode: "max"
+
+logging:
+  output_dir: "runs"

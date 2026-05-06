@@ -1,0 +1,36 @@
+# Config de sanity check — treino curtíssimo pra testar pipeline
+
+experiment:
+  name: "sanity_check"
+  seed: 42
+
+data:
+  source: "hemg"
+  batch_size: 32
+  num_workers: 2
+  max_samples_train: 500    # Só 500 imagens pra ser rápido
+  max_samples_val: 100
+
+model:
+  num_classes: 1
+  pretrained: true
+  freeze_backbone: true
+  dropout: 0.5
+
+training:
+  epochs: 2                  # Só 2 épocas
+  optimizer:
+    name: "adam"
+    lr: 0.001
+    weight_decay: 0.0001
+  scheduler:
+    name: "cosine"
+    eta_min: 0.00001
+  amp: true
+  early_stopping:
+    patience: 5              # Não vai disparar em 2 épocas
+    monitor: "val_auc"
+    mode: "max"
+
+logging:
+  output_dir: "runs"
