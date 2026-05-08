@@ -32,10 +32,8 @@ detectIA/
 │   ├── full_finetune.yaml      # Fine-tuning completo (Opção 2) — modelo final
 │   └── sanity.yaml             # Treino curtíssimo pra debug
 ├── scripts/                    # CLIs (executados do raiz do projeto)
-│   ├── explore_dataset.py      # Exploração inicial do Hemg
-│   ├── eda_resolutions.py      # Análise de distribuição de resoluções
-│   ├── sanity_check.py         # Sanity check do data pipeline
-│   ├── sanity_check_v2.py      # Estratificado por classe
+│   ├── eda_resolutions.py      # EDA: estrutura, labels, resoluções, subset filtrado
+│   ├── sanity_check_data.py    # Sanity check: pipeline + amostras por classe (do subset de treino)
 │   ├── sanity_check_model.py   # Sanity check do modelo
 │   ├── train.py                # Treino
 │   ├── evaluate.py             # Avaliação completa (métricas, plots, erros)
