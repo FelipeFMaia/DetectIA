@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Reset leve + ajustes pra UX em mobile (idosos) */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%; /* impede o iOS de inflar fonte em landscape */
+}
+
+body {
+  -webkit-tap-highlight-color: transparent;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Aumenta área de toque mínima dos botões pra facilitar idoso no celular.
+   WCAG recomenda 44x44px. */
+button, [role="button"], a {
+  min-height: 44px;
+}
+button.no-min, [role="button"].no-min {
+  min-height: auto;
+}
+
+/* Remove a aparência padrão de input file (escondido via sr-only no JSX) */
+input[type="file"] {
+  cursor: pointer;
+}
