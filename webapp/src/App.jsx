@@ -121,16 +121,15 @@ export default function App() {
 
   // Retry ─ inteligência mínima: galeria refaz; upload manda usuário pra tela
   // de upload (não temos como reaproveitar o File sem ele reanexar).
-  const retry = useCallback(() => {
+const retry = useCallback(() => {
     if (analyzedImage?.isUpload) {
       navigate('/enviar');
-      setAnalysis({ status: 'idle' });
-      return;
+    } else {
+      // Para galeria: volta pra lista pro usuario escolher outra imagem
+      navigate('/galeria');
     }
-    const galleryId = parseInt(segments[1]);
-    const item = GALLERY.find(g => g.id === galleryId);
-    if (item) analyzeGallery(item);
-  }, [analyzedImage, segments, navigate, analyzeGallery]);
+    setAnalysis({ status: 'idle' });
+  }, [analyzedImage, navigate]);
 
   // ── Roteamento ─────────────────────────────────────────────────────────────
   let screen;

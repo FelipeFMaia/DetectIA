@@ -43,3 +43,7 @@ Thumbs.db
 
 # HuggingFace cache
 .cache/
+# Pool de candidatas pra galeria (descartavel, nao commitar)
+gallery_pool/
+copy_chosen_to_gallery.sh
+scripts/extract_gallery_pool.py
